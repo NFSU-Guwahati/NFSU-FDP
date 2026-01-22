@@ -1,0 +1,222 @@
+/* Container for the entire accordion section */
+.accordion-section {
+  padding: 3rem 0rem; /* Spacing around the section */
+  background: transparent; /* No background color, allows backdrop to show */
+  display: flex; /* Flex container for centering */
+  justify-content: center; /* Horizontally center content */
+  align-items: center; /* Vertically center content */
+}
+
+/* Main card container that holds text and image */
+.accordion-card {
+  /* display: flex; Flex layout for image and text alignment */
+  /* justify-content: space-between; Space between image and text */
+  /* flex-direction: column-reverse; Stack vertically on small screens, image below text */
+  align-items: center; /* Center items horizontally */
+  /* gap: 1rem; Gap between image and text */
+  background: rgba(0, 0, 0, 0.2); /* Semi-transparent background for glass effect */
+  backdrop-filter: blur(1px); /* Blur background behind the card */
+  padding: 1.5rem; /* Inner spacing */
+  max-width: 1500px; /* Maximum width */
+  width: 100%; /* Full width within its container */
+  color: #f0f0f0; /* Default text color */
+  -webkit-backdrop-filter: blur(1px); /* Safari support for blur */
+  box-shadow: 0 0 30px rgba(0, 0, 0, 0.2); /* Soft shadow around card */
+  flex-wrap: wrap; /* Allow items to wrap on small screens */
+}
+
+/* Gradient animated heading text */
+.accordion-heading {
+  font-size: 3rem; /* Large font size */
+  font-weight: 900; /* Extra bold text */
+  background: linear-gradient(90deg, #00ff99, #00ccff, #00ff99); /* Color-changing gradient */
+  background-size: 200% auto; /* Double width to animate */
+  -webkit-background-clip: text; /* Clip background to text (Safari/Chrome) */
+  background-clip: text; /* Standard property for compatibility */
+  color: #00ff99; /* Fallback color for browsers that don't support background-clip:text */
+  -webkit-text-fill-color: transparent; /* Make text fill transparent so gradient shows */
+  position: relative;
+  animation: shimmer 4s infinite ease-in-out; /* Infinite shimmer animation */
+  text-align: left; /* Align heading to left */
+  font-family: 'Montserrat', sans-serif; /* Clean, modern font */
+}
+
+/* Sub-heading text */
+.accordion-text h2 {
+  font-size: 2.4rem; /* Large subheading */
+  color: #00ff99; /* Bright green color */
+  margin-bottom: 1rem; /* Space below heading */
+}
+
+/* Paragraph text in accordion section */
+.accordion-text p {
+  font-size: 1.25rem; /* Slightly larger than normal text */
+  color: #ffffff; /* White color for readability */
+  text-align: left; /* Align left for readability */
+  margin-bottom: 1.5rem; /* Space below paragraph */
+  font-family: 'Montserrat', sans-serif;
+}
+
+/* Image container */
+.accordion-image {
+  flex: 1; /* Take available space */
+  max-width: 70%; /* Restrict image container size */
+  transition: transform 0.5s ease, filter 0.5s ease; /* Smooth hover effects */
+}
+
+/* Image styling */
+.accordion-image img {
+  width: 100%; /* Responsive image */
+  height: auto; /* Maintain aspect ratio */
+  max-width: 400px; /* Limit maximum width */
+  border-radius: 1rem; /* Rounded corners */
+}
+
+/* Hover effect on image */
+.accordion-image:hover {
+  transform: scale(1.05); /* Slight zoom */
+  filter: drop-shadow(0 0 20px rgba(0, 255, 153, 0.219)); /* Soft glow */
+}
+
+/* Text container */
+.accordion-text {
+  flex: 1; /* Take available space */
+  padding: 1rem 2rem; /* Inner spacing */
+}
+
+/* Responsive styles for small screens (below 768px width) */
+@media (max-width: 768px) {
+  .accordion-card {
+    flex-direction: column-reverse; /* Stack vertically on smaller devices */
+    padding-left: 2rem;
+    padding-right: 2rem;
+    padding-top: 3rem;
+    padding-bottom: 1rem;
+    align-items: center;
+    text-align: center; /* Center text for better mobile appearance */
+  }
+
+  .accordion-text h2 {
+    font-size: 2rem; /* Smaller heading for mobile */
+  }
+
+  .accordion-text p {
+    font-size: 1rem; /* Smaller paragraph text */
+  }
+
+  .accordion-image img {
+    max-width: 120%; /* Allow image to be slightly larger than container */
+  }
+}
+
+/* Keyframes for animated gradient shimmer effect */
+@keyframes shimmer {
+  0% {
+    background-position: 0% center; /* Start shimmer from left */
+  }
+  100% {
+    background-position: 200% center; /* Move shimmer to the right */
+  }
+}
+
+/* Responsive styles for medium and larger screens (768px and above) */
+@media (min-width: 768px) {
+  .accordion-card {
+    flex-direction: row-reverse; /* Image on left, text on right for desktop */
+    padding: 4rem; /* More spacious padding for large screens */
+  }
+}
+
+.accordion-header {
+  width: 100%;
+  text-align: center;
+  margin-bottom: 15px;
+  font-size: 2.2rem;
+  font-weight: 500;
+  padding: 1rem 0;
+  color: #00ff99; /* fallback */
+  /* Glassy translucent fill */
+  background-color: rgba(116, 116, 116, 0.531);
+  border: 1px solid rgba(0, 255, 153, 0.12);
+  border-radius: 8px;
+  backdrop-filter: blur(6px);
+  -webkit-backdrop-filter: blur(6px);
+  box-shadow: 0 8px 20px rgba(60, 60, 60, 0.45), inset 0 1px 0 rgba(124, 124, 124, 0.03);
+  transition: background-color 0.25s ease, transform 0.15s ease, box-shadow 0.15s ease;
+
+  /* Gradient text (kept clipped to text so the button background remains translucent) */
+  background-image: linear-gradient(90deg, #00ccff, #00ff99, #00ccff);
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+  animation: shimmer 4s infinite ease-in-out;
+}
+
+.accordion-header:hover {
+  background-color: rgba(255, 255, 255, 0.06);
+  box-shadow: 0 12px 30px rgba(0, 0, 0, 0.55);
+  transform: translateY(-2px);
+}
+
+.accordion-content {
+  max-height: 0;
+  overflow: hidden;
+  transition: max-height 0.4s ease, opacity 0.3s ease;
+  opacity: 0;
+}
+
+.accordion-content p {
+  font-size: 1.25rem;
+  color: #ffffff;
+  text-align: center;
+  margin: 1rem 0;
+  font-family: 'Montserrat', sans-serif;
+  margin-bottom: 20px;
+}
+
+.accordion-item.active .accordion-content {
+  max-height: 500px;
+  opacity: 1;
+}
+
+.accordion-header:hover{
+  filter: drop-shadow(0 0 5px rgba(0, 255, 255, 0.5));
+  transition: filter 0.3s ease;
+}
+
+.schedule-table {
+  width: 100%;
+  border-collapse: collapse;
+  font-family: 'Montserrat', sans-serif;
+  margin-top: 1rem;
+  background: rgba(0, 0, 0, 0.3);
+  backdrop-filter: blur(2px);
+  margin-bottom: 1.5rem;
+}
+
+.schedule-table th,
+.schedule-table td {
+  padding: 0.75rem 1rem;
+  text-align: left;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.2);
+  color: #ffffff;
+}
+
+.schedule-table th {
+  font-weight: 700;
+  background: rgba(0, 255, 153, 0.15);
+  color: #00ff99;
+}
+
+.schedule-table tr:hover {
+  background: rgba(0, 255, 153, 0.08);
+}
+
+.break-row {
+  background: rgba(255, 255, 255, 0.06);
+  color: #cfcfcf;
+}
+
+.break-row td {
+  border-bottom: 1px dashed rgba(255, 255, 255, 0.25);
+}
