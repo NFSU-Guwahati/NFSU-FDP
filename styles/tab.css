@@ -200,4 +200,12 @@
   .tab-btn{
     font-size: 1rem;
   }
+
+  .timeline-slot {
+     position: relative;
+     padding-left: 18px;
+     border-left: 2px solid rgba(255,255,255,0.15);
+     padding-bottom: 1rem;
+  }
 }
+
