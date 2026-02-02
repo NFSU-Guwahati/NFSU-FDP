@@ -305,6 +305,10 @@
   .description::-webkit-scrollbar {
     width: 4px;
   }
+  
+  .card:hover {
+    transform: none;
+  }
 }
 
 @media (prefers-reduced-motion: reduce) {
